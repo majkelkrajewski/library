@@ -17,7 +17,7 @@ public class Main {
             int choose = SCANNER.nextInt();
             switch (choose) {
                 case 1:
-                    System.out.println("Not implemented yet");
+                    library.printAllBooks();
                     break;
                 case 2:
                     System.out.println("Not implemented yet");
