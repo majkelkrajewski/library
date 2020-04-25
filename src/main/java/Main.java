@@ -1,11 +1,12 @@
 import model.Book;
 import model.Library;
+import model.LibraryException;
 
 import java.util.Scanner;
 
 public class Main {
     private static Scanner SCANNER;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LibraryException {
         SCANNER = new Scanner(System.in);
         System.out.println("Robimy biblioteke");
         Library library = createLibraryWithBooks();
@@ -23,10 +24,18 @@ public class Main {
                     System.out.println("Not implemented yet");
                     break;
                 case 3:
-                    System.out.println("Not implemented yet");
+                    System.out.println("Podaj, którą książkę chcesz usunąć: ");
+                    long id = SCANNER.nextLong();
+                    try {
+                        library.deleteBookById(id);
+                        System.out.println("Udało się usunąć");
+                    } catch (LibraryException libraryException) {
+                        System.out.println(libraryException.getMessage());
+                    }
                     break;
                 default:
                     System.out.println("Zła komenda, podaj liczbę jeszcze raz");
+                    break;
             }
         }
     }
